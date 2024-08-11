@@ -192,3 +192,38 @@ template = """
 
 ```
 
+Here, the context labeling is done in order to rank results from the search based on their source. Other criteria may be used.
+```python
+
+    for result in results_main:
+        #if result["filepath"].startswith('filepath1'):
+        results_pirl.append({
+                "filepath": result["filepath"],
+                "content": result["content"],
+                # "meta_content": result["meta_content"],
+                # "status": result["status"],
+                # "form_number": result["sap_number"]
+            })
+        # elif result["filepath"].startswith('filepath2'):
+        #     results_scene7.append({
+        #         "filepath": result["filepath"],
+        #         "content": result["content"],
+        #         "year": result["year"],
+        #         "meta_content": result["meta_content"],
+        #         "status": result["status"],
+        #         "form_number": result["form_number"]
+        #     })
+        # elif result["filepath"].startswith('filepath3):
+        #     results_archive.append({
+        #         "filepath": result["filepath"],
+        #         "content": result["content"],
+        #         "year": result["year"],
+        #         "meta_content": result["meta_content"],
+        #         "status": result["status"],
+        #         "form_number": result["form_number"]
+        #     })
+
+        pdf_retr.append(result["filepath"])
+```
+        
+
