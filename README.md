@@ -151,3 +151,44 @@ def filter_documents_with_empty_vectors(documents):
         content_vector = doc.get('contentVector', [])
         meta_content_vector = doc.get('meta_content_vector', [])
 ```
+
+## Chatbot creation
+
+Here we first define our fields for search, and the vectorizable fields. We also specify the type of embedding used in the index creation. 
+
+The template used to prompt GPT for query and context analysis is also defined.
+
+```python
+
+
+index_name_pirl = "your_index"
+select_fields_from_index_pirl = ["filepath", "content","chunk_id"]
+vectorizable_fields_pirl = "contentVector, meta_content_vector"
+
+#streamlit message
+intro_msg = "Hello there! How may I assist you today?"
+m_data = 'your_meta_data'  # meta data unique for each project
+log_filename_table = "your_logs"
+
+
+GPT_DEPLOYMENT_NAME = 'gpt-4o'
+os.environ["AZURE_OPENAI_API_KEY"] = 'your_key'
+os.environ["AZURE_OPENAI_ENDPOINT"] = "your_endpoint"
+openai_api_version="2024-02-15-preview"
+
+# New Azure search config
+endpoint = "endpoint"
+key_credential_azure_search = "your_credential"
+credential_azure_search = AzureKeyCredential(key_credential_azure_search)
+
+# New embedding OpenAI config
+azure_openai_endpoint = "your_endpoint"
+azure_openai_key = "your_key"
+azure_openai_embedding_deployment = "text-embedding-ada-002"
+azure_openai_api_version = "2024-02-15-preview" 
+
+
+template = """
+
+```
+
