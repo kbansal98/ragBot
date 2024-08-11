@@ -20,3 +20,15 @@ The necessary requirements for running the index creation are shown below.
 !pip install python-pptx
 !pip install openai
 ```
+
+The requirements for running the actual chatbot depend on what you already have installed, but the general list can be found below.
+
+```python
+pip install langchain
+pip install streamlit
+pip install azure-search
+pip install openai
+pip install streamlit-chat
+pip install langchain-core
+pip install azure-identity
+```
