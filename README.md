@@ -134,3 +134,20 @@ meta_content = (
                             "meta_content_vector": []
                         }
 ```
+
+If you added more vector fields to your index, update the in the embedding cell here
+```python
+
+    for i, item in enumerate(input_data):
+        item['contentVector'] = content_embeddings[i]
+        #print(item['contentVector'])
+        item['meta_content_vector'] = meta_content_embeddings[i]
+
+    return input_data
+
+def filter_documents_with_empty_vectors(documents):
+    filtered_docs = []
+    for doc in documents:
+        content_vector = doc.get('contentVector', [])
+        meta_content_vector = doc.get('meta_content_vector', [])
+```
