@@ -102,3 +102,35 @@ index = SearchIndex(
 index_client.create_or_update_index(index)
 
 ```
+
+Update the following code in the "process_document" function in order to match you index and meta data (meta data is not required).
+```python
+meta_content = (
+                            f"File Name: {filename}, "
+                            f"Sap Number: {meta_data.get('sap_number', '')}, "
+                            f"Year: {meta_data.get('print_date', '')}, "
+                            f"Status: {meta_data.get('status', '')}, "
+                            f"Description: {meta_data.get('description', '')}, "
+                            f"Publication Type: {meta_data.get('Publication_Type', '')}, "
+                            f"Model Tag: {meta_data.get('Model_Tag', '')}"
+                        )
+                        chunk_id = f"{document_id}_{chunk_counter}"
+
+                        document = {
+                            "filepath": filepath,
+                            "summary": summary,
+                            "chunk_id": chunk_id,
+                            "content": chunk,
+                            "id": document_id,
+                            "meta_content": meta_content,
+                            "file_name": filename,
+                            "sap_number": meta_data.get('sap_number', ''),
+                            "year": meta_data.get('print_date', ''),
+                            "status": meta_data.get('status', ''),
+                            "description": meta_data.get('description', ''),
+                            "Publication_Type": meta_data.get('Publication_Type', ''),
+                            "Model_Tag": meta_data.get('Model_Tag', ''),
+                            "contentVector": [],
+                            "meta_content_vector": []
+                        }
+```
